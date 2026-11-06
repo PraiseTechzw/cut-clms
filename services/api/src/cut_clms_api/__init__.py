@@ -1,2 +1,9 @@
+"""CUT-CLMS API package."""
+
+__version__ = "0.1.0"
+
+
 def main() -> None:
-    print("Hello from cut-clms-api!")
+    from cut_clms_api.cli import main as cli_main
+
+    cli_main()

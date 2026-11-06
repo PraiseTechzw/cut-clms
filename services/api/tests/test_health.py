@@ -16,18 +16,17 @@ def test_readyz_returns_ok_when_database_reachable(client) -> None:  # type: ign
 
 
 def test_readyz_returns_503_when_database_unreachable(client, monkeypatch) -> None:  # type: ignore[no-untyped-def]
-    from cut_clms_api import db
     from sqlalchemy.exc import OperationalError
 
-    def broken_engine(settings):  # type: ignore[no-untyped-def]
+    def broken_database(engine):  # type: ignore[no-untyped-def]
         raise OperationalError("connection failed", None, Exception("boom"))
 
-    monkeypatch.setattr(db, "create_database_engine", broken_engine)
+    monkeypatch.setattr("cut_clms_api.main.check_database", broken_database)
 
     response = client.get("/readyz")
 
     assert response.status_code == 503
-    assert response.json()["detail"] == "database not ready"
+    assert response.json()["error"]["message"] == "database not ready"
 
 
 def test_root_redirects_to_api_documentation(client) -> None:  # type: ignore[no-untyped-def]
