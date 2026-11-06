@@ -1,0 +1,13 @@
+{
+  "name": "@cut-clms/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Runner shim so pnpm/turbo can fan out commands to the uv-managed CUT-CLMS API service",
+  "scripts": {
+    "dev": "uv run uvicorn cut_clms_api.main:app --host 127.0.0.1 --port 8000 --reload",
+    "build": "uv sync --locked",
+    "lint": "uv run ruff check . && uv run ruff format --check .",
+    "typecheck": "uv run mypy",
+    "test": "uv run pytest"
+  }
+}

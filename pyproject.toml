@@ -1,0 +1,9 @@
+# uv workspace root for the CUT-CLMS Python services.
+# Each service in services/* is an independent project with its own
+# virtualenv, but they share this root's uv.lock for reproducible installs.
+#
+# NOTE: this file intentionally has no [project] table (virtual root).
+# See docs/development.md for the full Python tooling flow.
+
+[tool.uv.workspace]
+members = ["services/*"]
