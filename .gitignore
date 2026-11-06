@@ -1,0 +1,44 @@
+# ── Dependencies ───────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+
+# ── Builds & caches ────────────────────────────────────────────
+.next/
+out/
+dist/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+coverage/
+
+# ── Python / uv ────────────────────────────────────────────────
+# Per-service virtualenvs (uv). The root uv.lock IS tracked.
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# ── Environment (keep *.example) ───────────────────────────────
+.env
+.env.*
+!.env.example
+docker-compose.override.yml
+
+# ── Editors / OS ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ── Misc ───────────────────────────────────────────────────────
+*.log
+.SIS/
+
+# superpowers scratch space (per-plan ledgers/briefs)
+.superpowers/

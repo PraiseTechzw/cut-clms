@@ -1,0 +1,35 @@
+{
+  "name": "cut-clms",
+  "version": "0.0.0",
+  "private": true,
+  "description": "CUT Computer Laboratory Management System - foundational monorepo",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": ">=12.0.0"
+  },
+  "scripts": {
+    "bootstrap": "bash scripts/bootstrap.sh",
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write .",
+    "check:format": "prettier --check .",
+    "check": "bash scripts/check.sh",
+    "check:python": "bash scripts/check-python.sh",
+    "db:up": "docker compose -f infrastructure/docker-compose.yml up -d --wait",
+    "db:down": "docker compose -f infrastructure/docker-compose.yml down",
+    "db:reset": "bash scripts/reset-db.sh",
+    "api:migrate": "uv run --directory services/api alembic upgrade head",
+    "contracts:generate": "bash scripts/generate-contracts.sh",
+    "contracts:validate": "bash scripts/check-openapi-drift.sh"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.9.0"
+  }
+}

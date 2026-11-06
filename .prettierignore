@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+dist
+.turbo
+.venv
+coverage
+pnpm-lock.yaml
+uv.lock
+packages/api-client/src/schema.gen.d.ts
+packages/contracts/openapi/api.json
+*.md
